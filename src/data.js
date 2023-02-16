@@ -1,10 +1,10 @@
 export const sliderItems = [
     {
       id: 1,
-      img: "https://images.pexels.com/photos/1092198/pexels-photo-1092198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      img: "https://images.pexels.com/photos/13715605/pexels-photo-13715605.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       title: "SUMMER SALE",
       desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-      bg: "f5fafd",
+      bg: "F6F7FC",
     },
     {
       id: 2,
