@@ -1,5 +1,7 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons"
+import { useState } from "react"
 import styled from "styled-components"
+import { sliderItems } from "../data"
 
 const Container = styled.div`
     width: 100%;
@@ -30,7 +32,7 @@ const Arrow = styled.div`
 const Wrapper = styled.div`
     height: 100%;
     display: flex;
-    transform: translateX(0vw)
+    transform: translateX(${props=>props.slideIndex * -100}vw)
 `
 const Slide = styled.div`
     width: 100vw;
@@ -68,9 +70,14 @@ const Button = styled.button`
 `
 
 const Slider = () => {
-
+      const [slideIndex, setSlideIndex] = useState(0)
     const handleClick = (direction) => {
 
+        if(direction==="left"){
+            setSlideIndex(slideIndex > 0 ? slideIndex -1 : 2) 
+        } else {
+            setSlideIndex(slideIndex < 2 ? slideIndex +1 : 0)
+        }
     }
 
   return (
@@ -78,17 +85,21 @@ const Slider = () => {
       <Arrow direction="left" onClick={()=>handleClick("left")}>
         <ArrowLeftOutlined/>
       </Arrow>
-      <Wrapper>
-        <Slide bg="f5fafd">
+      <Wrapper slideIndex={slideIndex}>
+            {sliderItems.map((item)=>(
+        <Slide bg={item.bg}>
         <ImgContainer>
-         <Image src="https://images.pexels.com/photos/1092198/pexels-photo-1092198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
+         <Image src={item.img}/>
         </ImgContainer>
         <InfoContainer>
-            <Title>SUMMER SAL</Title>
-            <Desc>DONT´T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS</Desc>
+            <Title>{item.title}</Title>
+            <Desc>
+                {item.desc}
+            </Desc>
             <Button>SHOW NOW</Button>
         </InfoContainer>
         </Slide>
+         ))}
         <Slide bg="fcf1ed">
         <ImgContainer>
          <Image src="https://images.pexels.com/photos/1092198/pexels-photo-1092198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
